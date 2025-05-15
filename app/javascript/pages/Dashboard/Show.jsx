@@ -15,7 +15,7 @@ export default function Page({home}) {
         <MapContainer
           className="h-full w-[80%] mx-auto"
           center={[lat, lng]}
-          zoom={13}
+          zoom={8}
           scrollWheelZoom={false}
           key={`${lat}-${lng}`} // Forces map to re-center on change
         >
