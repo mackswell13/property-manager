@@ -20,7 +20,7 @@ export default function AddProperty() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(values);
-    router.post("/assets", { asset: values });
+    router.post("/ass", values);
   }
 
   return (

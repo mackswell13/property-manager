@@ -1,11 +1,10 @@
 class AssetsController < ApplicationController
-  allow_unauthenticated_access
-
+  def hello
+    render "hello"
+  end
 
   def create
-    puts "running"
-    puts params.inspect
-
+    Rails.logger.info("Logging to Foreman")
     redirect_to root_path
   end
 end
