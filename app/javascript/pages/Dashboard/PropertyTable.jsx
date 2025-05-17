@@ -1,3 +1,4 @@
+import { Link } from "@inertiajs/react";
 import React from "react";
 
 export default function PropertyTable({ holdings, handleClick }) {
@@ -27,7 +28,7 @@ export default function PropertyTable({ holdings, handleClick }) {
                             holdings.map((holding, index) => (
                                 <tr key={index} className="hover:bg-gray-50">
                                     <td className="px-4 py-3 text-sm text-gray-800 whitespace-normal break-words">
-                                        {holding.name}
+                                        <Link href={`/holdings/${holding.id}`}>{holding.name}</Link>
                                     </td>
                                     <td className="px-4 py-3 text-sm text-gray-700">
                                         {Number(holding.lat).toFixed(6)}
@@ -58,5 +59,3 @@ export default function PropertyTable({ holdings, handleClick }) {
         </div>
     );
 }
-
-

@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
 
-  resources :holdings, only: [ :index, :create, :update, :destroy ]
+  resources :holdings, only: [ :index, :show, :create, :update, :destroy ] do
+    resources :address, only: [ :create, :update ]
+  end
+
 
   get "/hello", to: "assets#hello"
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)

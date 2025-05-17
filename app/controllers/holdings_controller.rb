@@ -8,6 +8,18 @@ class HoldingsController < ApplicationController
     }
   end
 
+  def show
+    holding = Holding.find(params[:id])
+
+    if holding.user == Current.user
+     render inertia: "Holding/Show", props: {
+        holding: holding.as_json(only: %i[id name lat lng]),
+        address: holding.address&.as_json(only: %i[id street_address city state postal_code country])
+      }
+    else
+      redirect_to root_path, alert: "you are not authorized to view this holding"
+    end
+  end
 
   def create
     holding = Current.user.holdings.build(holding_params)

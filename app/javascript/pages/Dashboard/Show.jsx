@@ -34,7 +34,7 @@ export default function Page({ home, holdings }) {
                     {home?.lat && home?.lng &&
                         <Marker position={[home.lat, home.lng]}>
                             <Popup>
-                                Current Position <br />
+                                Home <br/>
                                 Lat: {home.lat}, Lng: {home.lng}
                             </Popup>
                         </Marker>
