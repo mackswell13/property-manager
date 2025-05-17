@@ -3,21 +3,18 @@ import "leaflet/dist/leaflet.css";
 import { useState } from "react";
 import AddProperty from "./AddProperty";
 import PropertyTable from "./PropertyTable";
+import HoldingMarker from "../Holding/HoldingMarker";
 
 export default function Page({ home, holdings }) {
     const [lat, setLat] = useState(home.lat ?? 39.8283);
     const [lng, setLng] = useState(home.lng ?? -98.5795);
 
-    console.log("home", home);
-    console.log("holdings", holdings);
-
     return (
         <main className="container mx-auto h-screen pt-6">
             <h1 className="text-center font-bold text-4xl mb-6">Property Manager</h1>
-
             <div className="h-[60%]">
                 <MapContainer
-                    className="h-full w-[80%] mx-auto"
+                    className="h-full w-[80%] mx-auto z-0"
                     zoom={4}
                     center={[lat, lng]}
                     scrollWheelZoom={false}
@@ -36,19 +33,12 @@ export default function Page({ home, holdings }) {
                         </Marker>
                     }
                     {holdings.map((holding) => (
-                        <Marker position={[holding.lat, holding.lng]}>
-                            <Popup>
-                                {holding.name}<br />
-                                Lat: {holding.lat}, Lng: {holding.lng}
-                            </Popup>
-                        </Marker>
+                        <HoldingMarker key={holding.id} holding={holding} />
                     ))}
                 </MapContainer>
             </div>
-
             <AddProperty />
             <PropertyTable holdings={holdings} />
         </main>
     );
 }
-

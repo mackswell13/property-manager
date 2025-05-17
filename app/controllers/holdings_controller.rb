@@ -7,6 +7,14 @@ class HoldingsController < ApplicationController
     end
   end
 
+  def update
+    holding = Holding.find(params[:id])
+
+    if holding.update(holding_params)
+      redirect_to root_path
+    end
+  end
+
 
   private
 

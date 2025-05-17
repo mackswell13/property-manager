@@ -17,8 +17,8 @@ export default function PropertyTable({ holdings }) {
             holdings.map((holding, index) => (
               <tr key={index} className="hover:bg-gray-50">
                 <td className="px-4 py-2 border-b">{holding.name}</td>
-                <td className="px-4 py-2 border-b">{holding.lat}</td>
-                <td className="px-4 py-2 border-b">{holding.lng}</td>
+                <td className="px-4 py-2 border-b">{Number(holding.lat).toFixed(6)}</td>
+                <td className="px-4 py-2 border-b">{Number(holding.lng).toFixed(6)}</td>
               </tr>
             ))
           ) : (
