@@ -8,10 +8,10 @@ export default function Page({home}) {
   const [lng, setLng] = useState(home.lng);
 
   return (
-    <main className="container mx-auto">
-      <h1 className="text-center my-6 font-bold text-4xl">Property Manager</h1>
+    <main className="container mx-auto h-screen pt-6">
+      <h1 className="text-center font-bold text-4xl mb-6">Property Manager</h1>
 
-      <div className="h-[800px]">
+      <div className="h-[60%]">
         <MapContainer
           className="h-full w-[80%] mx-auto"
           center={[lat, lng]}

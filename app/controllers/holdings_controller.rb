@@ -1,7 +1,4 @@
-class AssetsController < ApplicationController
-  def hello
-    render "hello"
-  end
+class HoldingsController < ApplicationController
 
   def create
     Rails.logger.info("Logging to Foreman")

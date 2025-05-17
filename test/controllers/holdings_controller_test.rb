@@ -1,6 +1,6 @@
 require "test_helper"
 
-class SingleFamilyTest < ActiveSupport::TestCase
+class HoldingsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
