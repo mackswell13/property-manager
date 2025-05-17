@@ -1,11 +1,9 @@
 import { Marker, Popup } from "react-leaflet";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import HoldingEditForm from "./HoldingEditForm";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import HoldingDeleteForm from "./HoldingDeleteForm";
 
-export default function HoldingMarker({ holding }) {
+export default function HoldingMarker({ holding, isActive }) {
     const [isEditing, setIsEditing] = useState(false);
     const markerRef = useRef(null);
 
@@ -14,6 +12,17 @@ export default function HoldingMarker({ holding }) {
         e.stopPropagation();
         setIsEditing(true);
     };
+
+    useEffect(() => {
+        const marker = markerRef.current;
+        if (marker) {
+            if (isActive) {
+                marker.openPopup();
+            } else {
+                marker.closePopup();
+            }
+        }
+    }, [isActive]);
 
 
     return (

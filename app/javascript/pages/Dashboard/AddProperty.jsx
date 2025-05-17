@@ -76,7 +76,7 @@ export default function AddProperty() {
         <>
             <form
                 onSubmit={handleSubmit}
-                className="flex flex-wrap items-end gap-6 p-4 bg-white border-b justify-center relative"
+                className="flex flex-wrap items-end gap-6 p-4 bg-white justify-center relative"
             >
                 <div>
                     <label className="block text-sm font-medium text-gray-700">

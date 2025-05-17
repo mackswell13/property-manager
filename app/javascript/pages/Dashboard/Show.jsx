@@ -8,6 +8,13 @@ import HoldingMarker from "../Holding/HoldingMarker";
 export default function Page({ home, holdings }) {
     const [lat, setLat] = useState(home?.lat ?? 39.8283);
     const [lng, setLng] = useState(home?.lng ?? -98.5795);
+    const [activeHolding, setActiveHolding] = useState("");
+
+    const handlePropertyTableClick = (holding) => {
+        setLat(holding.lat);
+        setLng(holding.lng);
+        setActiveHolding(holding.id);
+    }
 
     return (
         <main className="container mx-auto h-screen pt-6">
@@ -33,12 +40,12 @@ export default function Page({ home, holdings }) {
                         </Marker>
                     }
                     {holdings.map((holding) => (
-                        <HoldingMarker key={holding.id} holding={holding} />
+                        <HoldingMarker key={holding.id} holding={holding} isActive={activeHolding === holding.id} />
                     ))}
                 </MapContainer>
             </div>
             <AddProperty />
-            <PropertyTable holdings={holdings} />
+            <PropertyTable holdings={holdings} handleClick={handlePropertyTableClick} />
         </main>
     );
 }
