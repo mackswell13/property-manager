@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_17_155614) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_17_185827) do
   create_table "areas", force: :cascade do |t|
     t.string "name"
     t.float "lat"
@@ -30,6 +30,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_17_155614) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "lat", "lng"], name: "index_holdings_on_user_id_and_lat_and_lng", unique: true
+    t.index ["user_id", "name"], name: "index_holdings_on_user_id_and_name", unique: true
     t.index ["user_id"], name: "index_holdings_on_user_id"
   end
 

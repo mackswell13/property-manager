@@ -1,6 +1,7 @@
 import { useForm } from "@inertiajs/react";
 
 export default function HoldingEditForm({ holding, onClose }) {
+
     const { data, setData, put, processing, reset, errors } = useForm({
         id: holding.id,
         lat: holding.lat,

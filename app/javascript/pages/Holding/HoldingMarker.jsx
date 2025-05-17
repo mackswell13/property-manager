@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import HoldingEditForm from "./HoldingEditForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import HoldingDeleteForm from "./HoldingDeleteForm";
 
 export default function HoldingMarker({ holding }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -13,6 +14,7 @@ export default function HoldingMarker({ holding }) {
         e.stopPropagation();
         setIsEditing(true);
     };
+
 
     return (
         <Marker position={[holding.lat, holding.lng]} key={holding.id} ref={markerRef}>
@@ -30,9 +32,7 @@ export default function HoldingMarker({ holding }) {
                             >
                                 Edit
                             </button>
-                            <button className="flex-shrink-0 bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600">
-                                <FontAwesomeIcon icon={faTrash} />
-                            </button>
+                            <HoldingDeleteForm holdingId={holding.id} className="flex-shrink-0 bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600 disabled:opacity-50" />
                         </div>
                     </div>
                 ) : (
