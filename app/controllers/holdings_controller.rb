@@ -1,7 +1,16 @@
 class HoldingsController < ApplicationController
-
   def create
-    Rails.logger.info("Logging to Foreman")
-    redirect_to root_path
+    holding = Current.user.holdings.build(holding_params)
+
+    if holding.save
+      redirect_to root_path
+    end
+  end
+
+
+  private
+
+  def holding_params
+    params.require(:holding).permit(:name, :lat, :lng)
   end
 end

@@ -1,5 +1,12 @@
 class DashboardController < ApplicationController
   def show
-    render inertia: "Dashboard/Show", props: { home: { lat: 40.7128, lng: -74.0060 } }
+    home = Current.user.areas.where(is_active: true).first
+    holdings = Current.user.holdings
+
+
+    render inertia: "Dashboard/Show", props: {
+      home: home.as_json(only: %i[lat lng]),
+      holdings: holdings.as_json(only: %i[id name lat lng])
+    }
   end
 end

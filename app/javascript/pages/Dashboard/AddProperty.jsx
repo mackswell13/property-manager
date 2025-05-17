@@ -20,7 +20,15 @@ export default function AddProperty() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(values);
-    router.post("/holdings", values);
+    router.post("/holdings", values, {
+        onSuccess: () => {
+            setValues({
+                lat: 0,
+                lng: 0,
+                name: "",
+            })
+        }
+    });
   }
 
   return (
@@ -68,7 +76,7 @@ export default function AddProperty() {
       </div>
       <button
         type="submit"
-        className="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700"
+        className="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 cursor-pointer"
       >
         Add Property
       </button>
