@@ -3,14 +3,12 @@ class SessionsController < ApplicationController
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_url, alert: "Try again later." }
 
   def new
-   
-  render inertia: "Auth/Login", props: {
-    flash: {
-      alert: flash[:alert],
-      notice: flash[:notice]
+    render inertia: "Auth/Login", props: {
+      flash: {
+        alert: flash[:alert],
+        notice: flash[:notice]
+      }
     }
-  }
-
   end
 
   def create

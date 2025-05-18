@@ -48,5 +48,7 @@ module Authentication
     def terminate_session
       Current.session.destroy
       cookies.delete(:session_id)
+      # Need to make sure to clear alerts
+      flash.clear
     end
 end

@@ -1,10 +1,15 @@
-import { MapContainer, TileLayer, Popup, Marker, useMapEvent } from "react-leaflet";
+import {
+    MapContainer,
+    TileLayer,
+    Popup,
+    Marker,
+    useMapEvent,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useState } from "react";
-import AddProperty from "./AddProperty";
-import PropertyTable from "./PropertyTable";
 import HoldingMarker from "../Holding/HoldingMarker";
-import LogoutButton from "../Auth/LogoutButton";
+import PropertyTable from "../Dashboard/PropertyTable";
+import ListingMarker from "./ListingMarker";
 
 const MapClickHandler = ({ onMapClick }) => {
     useMapEvent("click", () => {
@@ -12,9 +17,10 @@ const MapClickHandler = ({ onMapClick }) => {
     });
 };
 
-export default function Page({ home, holdings }) {
-    const [lat, setLat] = useState(home?.lat ?? 39.8283);
-    const [lng, setLng] = useState(home?.lng ?? -98.5795);
+export default function Page({ holdings }) {
+    // center us
+    const [lat, setLat] = useState(39.8283);
+    const [lng, setLng] = useState(-98.5795);
     const [activeHolding, setActiveHolding] = useState("");
 
     const handlePropertyTableClick = (holding) => {
@@ -41,16 +47,8 @@ export default function Page({ home, holdings }) {
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    {home?.lat && home?.lng && (
-                        <Marker position={[home.lat, home.lng]}>
-                            <Popup>
-                                Home <br />
-                                Lat: {home.lat}, Lng: {home.lng}
-                            </Popup>
-                        </Marker>
-                    )}
                     {holdings.map((holding) => (
-                        <HoldingMarker
+                        <ListingMarker
                             key={holding.id}
                             holding={holding}
                             isActive={activeHolding === holding.id}
@@ -58,14 +56,10 @@ export default function Page({ home, holdings }) {
                     ))}
                 </MapContainer>
             </div>
-            <AddProperty />
             <PropertyTable
                 holdings={holdings}
                 handleClick={handlePropertyTableClick}
             />
-            <div class="my-5">
-                <LogoutButton />
-            </div>
         </main>
     );
 }

@@ -1,5 +1,5 @@
 class HoldingsController < ApplicationController
-  before_action :check_user, only: [ :update, :destroy ]
+  before_action :check_user
 
   def index
     holdings = Current.user.holdings
@@ -58,8 +58,7 @@ class HoldingsController < ApplicationController
     @holding = Holding.find_by(id: params[:id])
 
     unless @holding && @holding.user == Current.user
-      flash[:alert] = "You are not authorized to access this holding."
-      redirect_to root_path
+      redirect_to root_path, alert: "You are not authorized to access this holding."
     end
   end
 
