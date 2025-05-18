@@ -2,6 +2,7 @@ import { Marker, Popup } from "react-leaflet";
 import { useState, useRef, useEffect } from "react";
 import HoldingEditForm from "./HoldingEditForm";
 import HoldingDeleteForm from "./HoldingDeleteForm";
+import { Link } from "@inertiajs/react";
 
 export default function HoldingMarker({ holding, isActive }) {
     const [isEditing, setIsEditing] = useState(false);
@@ -30,7 +31,7 @@ export default function HoldingMarker({ holding, isActive }) {
             <Popup minWidth={200} closeButton={false}>
                 {!isEditing ? (
                     <div className="flex flex-col gap-2">
-                        <h3 className="font-bold">{holding.name}</h3>
+                        <h3 className="font-bold"><Link href={`/holdings/${holding.id}`}>{holding.name}</Link></h3>
                         <p>
                             Lat: {holding.lat}, Lng: {holding.lng}
                         </p>
