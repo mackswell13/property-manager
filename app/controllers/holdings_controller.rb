@@ -14,7 +14,8 @@ class HoldingsController < ApplicationController
     if holding.user == Current.user
      render inertia: "Holding/Show", props: {
         holding: holding.as_json(only: %i[id name lat lng]),
-        address: holding.address&.as_json(only: %i[id street_address city state postal_code country])
+        address: holding.address&.as_json(only: %i[id street_address city state postal_code country]),
+        units: holding.units.as_json(only: [ :id, :name, :square_footage, :bedroom_count, :bathroom_count, :rental_rate, :status ])
       }
     else
       redirect_to root_path, alert: "you are not authorized to view this holding"
