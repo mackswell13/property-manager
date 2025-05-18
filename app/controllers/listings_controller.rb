@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
   allow_unauthenticated_access
 
-  def show
+  def index
     holdings = Holding.with_available_units
 
     render inertia: "Listings/Show", props: {
@@ -11,12 +11,12 @@ class ListingsController < ApplicationController
 
 
   def fetch_available_units
+    puts "running"
     holding = Holding.find(params[:holding_id])
     available_units = holding.units.available
 
-    render inertia: "Units/Popup", props: {
-      holding: holding,
-      available_units: available_units
-    }
+    render inertia: nil, props: {
+      units: available_units.as_json(only: [ :name ])
+    }, only: [ :units ]
   end
 end

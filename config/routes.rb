@@ -17,7 +17,9 @@ Rails.application.routes.draw do
 
   get "/hello", to: "assets#hello"
 
-  get "/listings", to: "listings#show"
+  resources :listings, only: [ :index ] do
+    get "fetch_available_units", on: :member
+  end
   # Defines the root path route ("/")
   root "dashboard#show"
 end
