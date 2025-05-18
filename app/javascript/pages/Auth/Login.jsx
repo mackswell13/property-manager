@@ -1,15 +1,15 @@
-import { useForm } from '@inertiajs/react'
+import { useForm } from "@inertiajs/react";
 
 export default function Login({ flash }) {
   const { data, setData, post, processing, errors } = useForm({
-    email_address: '',
-    password: '',
-  })
+    email_address: "",
+    password: "",
+  });
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    post('/session')
-  }
+    e.preventDefault();
+    post("/session");
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
@@ -40,11 +40,13 @@ export default function Login({ flash }) {
               required
               autoFocus
               value={data.email_address}
-              onChange={(e) => setData('email_address', e.target.value)}
+              onChange={(e) => setData("email_address", e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.email_address && (
-              <p className="text-red-500 text-sm mt-1">{errors.email_address}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email_address}
+              </p>
             )}
           </div>
 
@@ -57,7 +59,7 @@ export default function Login({ flash }) {
               required
               maxLength={72}
               value={data.password}
-              onChange={(e) => setData('password', e.target.value)}
+              onChange={(e) => setData("password", e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.password && (
@@ -71,7 +73,7 @@ export default function Login({ flash }) {
               disabled={processing}
               className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition"
             >
-              {processing ? 'Signing in...' : 'Sign in'}
+              {processing ? "Signing in..." : "Sign in"}
             </button>
           </div>
         </form>
@@ -86,6 +88,5 @@ export default function Login({ flash }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
