@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :holdings, only: [ :index, :show, :create, :update, :destroy ] do
     resources :address, only: [ :create, :update ]
+    resources :units, only: [ :create ]
   end
 
 
