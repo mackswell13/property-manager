@@ -3,9 +3,6 @@
         "sourceCodeDir": "app/javascript",
         "watchAdditionalPaths": []
     },
-    "production": {
-        "ssrBuildEnabled": true
-    },
     "development": {
         "autoBuild": true,
         "publicOutputDir": "vite-dev",
