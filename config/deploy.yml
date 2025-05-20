@@ -1,13 +1,13 @@
 # Name of your application. Used to uniquely configure containers.
-service: property
+service: property_manager
 
 # Name of the container image.
-image: your-user/property
+image: mackswell13/property_manager
 
 # Deploy to these servers.
 servers:
   web:
-    - 192.168.0.1
+    - 137.184.67.209
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -25,7 +25,7 @@ proxy:
 registry:
   # Specify the registry server, if you're not using Docker Hub
   # server: registry.digitalocean.com / ghcr.io / ...
-  username: your-user
+  username: mackswell13
 
   # Always use an access token rather than real password when possible.
   password:

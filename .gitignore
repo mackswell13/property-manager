@@ -32,6 +32,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/credentials
 
 # Vite Ruby
 /public/vite*
@@ -43,3 +44,5 @@ node_modules
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+/config/credentials/production.key
