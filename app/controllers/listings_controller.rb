@@ -9,14 +9,10 @@ class ListingsController < ApplicationController
     }
   end
 
-
   def fetch_available_units
-    puts "running"
     holding = Holding.find(params[:holding_id])
     available_units = holding.units.available
 
-    render inertia: nil, props: {
-      units: available_units.as_json(only: [ :name ])
-    }, only: [ :units ]
+    render json: { units: available_units.as_json(only: [ :name, :rental_rate ]) }
   end
 end
